@@ -9,8 +9,8 @@ router.get('/:id', getTask);
 
 router.post('/', postTask);
 
-router.delete('/', deleteTask);
+router.delete('/:id', deleteTask);
 
-router.put('/', updateTask);
+router.put('/:id', updateTask);
 
 module.exports = router;
