@@ -56,7 +56,7 @@ function TaskForm() {
 
   return(
     <form className='form-container' onSubmit={(e) => handleSubmit(e)}>
-      <h3 className='form-title'>{editing ? "Edit Task" : "Create Task"}</h3>
+      <h3 className='form-title'> Taks Form </h3>
         <input className='input-title-form' type='text' name='title' value={input.title} placeholder='Insert a task title' onChange={(e) => handleInputChange(e)} />
         <input className='text-area-form' type='text' name='description' value={input.description} placeholder='Insert a short description' onChange={(e) => handleInputChange(e)} />
         <button className='submit-form' type='submit' >Save</button>

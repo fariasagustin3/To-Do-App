@@ -5,6 +5,7 @@ function Task({ task, handleDelete, navigate }) {
   return(
     <div className='container'>
       <div className='data-container'>
+      <input className='checkbox' type='checkbox' />
       <h4 className='task-list-element-title'>{task.title}</h4>
       <p className='task-list-element-description'>{task.description}</p>
       </div>

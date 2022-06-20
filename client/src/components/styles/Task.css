@@ -8,7 +8,20 @@
     padding-right: 15px;
 }
 
+.checkbox {
+    margin-top: 37px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 37px;
+    height: 37px;
+    position: absolute;
+}
+
 .task-list-element-title {
+    margin-left: 70px;
     display: flex;
     justify-content: flex-start;
     color: white;
@@ -16,6 +29,7 @@
 }
 
 .task-list-element-description {
+    margin-left: 70px;
     display: flex;
     justify-content: flex-start;
     color: white;
