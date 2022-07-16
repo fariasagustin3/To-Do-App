@@ -17,7 +17,7 @@ function TaskForm() {
   const [editing, setEditing] = useState(false)
 
   const loadTask = async (id) => {
-    const res = await axios.get(`http://localhost:4000/tasks/${id}`)
+    const res = await axios.get(`https://app-tasky.herokuapp.com/tasks/${id}`)
     const json = await res.data
     setInput({ title: json.title, description: json.description })
     setEditing(true)
@@ -37,14 +37,14 @@ function TaskForm() {
     e.preventDefault();
 
     if(editing === true) {
-      const response = await axios.put(`http://localhost:4000/tasks/${params.id}`, {
+      const response = await axios.put(`https://app-tasky.herokuapp.com/tasks/${params.id}`, {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(input)
       })
       navigate('/')
 
     } else {
-      await axios.post(`http://localhost:4000/tasks`, {
+      await axios.post(`https://app-tasky.herokuapp.com/tasks`, {
         body: JSON.stringify(input),
         headers: { 'Content-Type': 'application/json'}
       })

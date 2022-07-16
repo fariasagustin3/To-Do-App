@@ -12,7 +12,7 @@ function Tasks() {
   const [tasks, setTasks] = useState([])
 
   const loadTask = async () => {
-    const res = await axios.get(`http://localhost:4000/tasks`)
+    const res = await axios.get(`https://app-tasky.herokuapp.com/tasks`)
     const json = await res.data
     setTasks(json)
   }
@@ -22,7 +22,7 @@ function Tasks() {
   }, [])
 
   const handleDelete = async (id) => {
-    const res = await axios.delete(`http://localhost:4000/tasks/${id}`)
+    const res = await axios.delete(`https://app-tasky.herokuapp.com/tasks/${id}`)
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
