@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Tasks.css';
 import Task from './Task';
+import axios from 'axios';
 
 
 function Tasks() {
@@ -11,9 +12,9 @@ function Tasks() {
   const [tasks, setTasks] = useState([])
 
   const loadTask = async () => {
-    const res = await fetch(`http://localhost:4000/tasks`)
-    const data = await res.json()
-    setTasks(data)
+    const res = await axios.get(`http://localhost:4000/tasks`)
+    const json = await res.data
+    setTasks(json)
   }
 
   useEffect(() => {
@@ -21,7 +22,7 @@ function Tasks() {
   }, [])
 
   const handleDelete = async (id) => {
-    const res = await fetch(`http://localhost:4000/tasks/${id}`, { method: 'DELETE' })
+    const res = await axios.delete(`http://localhost:4000/tasks/${id}`)
     setTasks(tasks.filter((task) => task.id !== id))
   }
 

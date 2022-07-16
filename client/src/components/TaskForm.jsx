@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'; 
 import './styles/TaskForm.css';
+import axios from 'axios';
 
 
 function TaskForm() {
@@ -16,9 +17,9 @@ function TaskForm() {
   const [editing, setEditing] = useState(false)
 
   const loadTask = async (id) => {
-    const res = await fetch(`http://localhost:4000/tasks/${id}`)
-    const data = await res.json()
-    setInput({ title: data.title, description: data.description })
+    const res = await axios.get(`http://localhost:4000/tasks/${id}`)
+    const json = await res.data
+    setInput({ title: json.title, description: json.description })
     setEditing(true)
   }
 
@@ -36,16 +37,14 @@ function TaskForm() {
     e.preventDefault();
 
     if(editing === true) {
-      const response = await fetch(`http://localhost:4000/tasks/${params.id}`, {
-        method: 'PUT',
+      const response = await axios.put(`http://localhost:4000/tasks/${params.id}`, {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(input)
       })
       navigate('/')
 
     } else {
-      await fetch(`http://localhost:4000/tasks`, { 
-        method: 'POST',
+      await axios.post(`http://localhost:4000/tasks`, {
         body: JSON.stringify(input),
         headers: { 'Content-Type': 'application/json'}
       })

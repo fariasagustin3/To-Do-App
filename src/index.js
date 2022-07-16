@@ -17,5 +17,5 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(4000)
+app.listen(process.env.PORT)
 console.log('Running on port 4000')
